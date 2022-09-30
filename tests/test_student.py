@@ -2,7 +2,16 @@ from student.student import (
     create_student, add_class, get_num_classes, summary, 
     get_student_with_more_classes
 )
-
+def test_empty_course():
+    name= "Ada Lovelace"
+    level = "sophomore"
+    courses= None
+    
+    ada = create_student(name, level, courses)
+    assert ada["name"] == name
+    assert ada["level"] == level
+    assert ada["courses"] == []
+    
 def test_init():
     name = "Ada Lovelace"
     level = "sophomore"
@@ -43,6 +52,8 @@ def test_get_student_with_more_classes():
         "sophomore",
         ["mathematics", "foundations of computing"]
     )
+    
+    assert len(charles["courses"])<len(ada["courses"])
 
     # TODO: write assertions
 
